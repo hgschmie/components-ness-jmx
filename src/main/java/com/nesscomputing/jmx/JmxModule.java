@@ -26,8 +26,6 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Scopes;
 import com.google.inject.Singleton;
-
-import com.nesscomputing.jmx.agent.JmxAgentAttachModule;
 import com.nesscomputing.lifecycle.Lifecycle;
 
 /**
@@ -42,7 +40,6 @@ public class JmxModule extends AbstractModule
     protected void configure()
     {
         bind(MBeanExporter.class).to(LifecycledMBeanExporter.class).in(Scopes.SINGLETON);
-        install (new JmxAgentAttachModule());
 
         // Ensure that the InternalMBeanModule gets installed, otherwise none of the
         // jmxutils bindings will show up.
